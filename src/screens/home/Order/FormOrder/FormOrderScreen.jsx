@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-const ProfileScreen = () => {
+const FormOrderScreen = () => {
   return (
     <View>
-      <Text>ProfileScreen</Text>
+      <Text>FormOrderScreen</Text>
     </View>
   );
 };
 
-export default ProfileScreen;
+export default FormOrderScreen;

@@ -33,6 +33,16 @@ const theme = {
     h3: 24,
   },
   shadows: {
+    light: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 0.01,
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 1,
+      elevation: 3,
+    },
     soft: {
       shadowColor: '#000',
       shadowOffset: {

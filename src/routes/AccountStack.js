@@ -1,21 +1,37 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProfileScreen from '../screens/account/profile/ProfileScreen';
-import theme from '../theme/theme';
+import HistoryScreen from '../screens/account/history/HistoryScreen';
+import AccountScreen from '../screens/account/account/AccountScreen';
 
 const Stack = createNativeStackNavigator();
 
 const AccountStack = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name='account'
+        component={AccountScreen}
+        options={{
+          title: 'Mi Cuenta',
+        }}
+      />
       <Stack.Screen
         name='profile'
         component={ProfileScreen}
         options={{
           title: 'Perfil',
-          headerShadowVisible: false,
-          headerStyle: {
-            backgroundColor: theme.colors.background,
-          },
+        }}
+      />
+      <Stack.Screen
+        name='history'
+        component={HistoryScreen}
+        options={{
+          title: 'Historial',
         }}
       />
     </Stack.Navigator>

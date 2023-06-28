@@ -5,14 +5,18 @@ import { Button, Icon, Input } from 'react-native-elements';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import Toast from 'react-native-toast-message';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { initialValues, validationSchema } from '../register/registerForm.data';
 import { useFormik } from 'formik';
 import { styles } from './registerForm.styles';
 import theme from '../../../theme/theme';
+import { signIn } from '../../../redux/authReducer';
+import { useDispatch } from 'react-redux';
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const showHidePassword = () => setShowPassword((prevState) => !prevState);
 
@@ -37,6 +41,8 @@ const RegisterForm = () => {
           uid,
           email,
         });
+        await AsyncStorage.setItem('@userToken', uid);
+        dispatch(signIn(uid));
       } catch (error) {
         console.log(error);
         Toast.show({

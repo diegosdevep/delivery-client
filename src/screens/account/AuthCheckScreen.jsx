@@ -7,7 +7,7 @@ import AuthCheckStack from '../../routes/AuthCheckStack';
 import AppNavigation from '../../routes/AppNavigation';
 import { restoreToken } from '../../redux/authReducer';
 
-const AccountScreen = () => {
+const AuthCheckScreen = () => {
   const userToken = useSelector((state) => state.auth.userToken);
   const dispatch = useDispatch();
 
@@ -43,4 +43,4 @@ const AccountScreen = () => {
   return userToken ? <AppNavigation /> : <AuthCheckStack />;
 };
 
-export default AccountScreen;
+export default AuthCheckScreen;
