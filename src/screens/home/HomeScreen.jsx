@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -56,7 +57,7 @@ const HomeScreen = () => {
   // }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header />
       <Search />
       <Categories />
@@ -93,7 +94,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         ) : null
       )} */}
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

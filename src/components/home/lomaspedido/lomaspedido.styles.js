@@ -9,14 +9,15 @@ export const styles = StyleSheet.create({
     fontWeight: theme.fontWeight.semiBold,
     color: theme.colors.blackMedium,
     marginHorizontal: 16,
-    marginTop: 20,
+    marginTop: 15,
   },
   scrollViewContent: {
     alignItems: 'center',
     justifyContent: 'space-around',
     gap: 20,
     marginTop: 20,
-    marginHorizontal: 10,
+    marginBottom: 5,
+    marginHorizontal: 16,
   },
   card: {
     width: 175,

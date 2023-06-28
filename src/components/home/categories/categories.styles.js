@@ -2,14 +2,12 @@ import { StyleSheet } from 'react-native';
 import theme from '../../../theme/theme';
 
 export const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 16,
-  },
   title: {
     fontSize: theme.fontSize.md,
     fontWeight: theme.fontWeight.semiBold,
     color: theme.colors.blackMedium,
-    marginVertical: 10,
+    marginVertical: 5,
+    marginHorizontal: 16,
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -17,7 +15,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 10,
     gap: 10,
-    margin: 10,
+    marginHorizontal: 16,
   },
   boxCategorie: {
     backgroundColor: '#F5F5F4',

@@ -53,13 +53,13 @@ const LoMasPedido = () => {
           producto.existencia ? (
             <View key={producto.id} style={styles.card}>
               <Image source={{ uri: producto.imagen }} style={styles.img} />
-              <View style={styles.iconBox}>
+              <TouchableOpacity style={styles.iconBox} activeOpacity={0.7}>
                 <Ionicons
                   name='heart-outline'
                   size={24}
                   color={theme.colors.white}
                 />
-              </View>
+              </TouchableOpacity>
 
               <View style={styles.content}>
                 <Text>{producto.nombre.slice(0, 19)}</Text>
