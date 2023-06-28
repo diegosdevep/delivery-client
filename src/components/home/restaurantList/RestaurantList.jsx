@@ -1,16 +1,27 @@
-import { Image, ScrollView } from 'react-native';
+import { Image, ScrollView, TouchableOpacity } from 'react-native';
 import { View, Text } from 'react-native';
 import { styles } from './restaurantList.styles';
 import { restaurantes } from '../../../utils/restaurants';
 import { Ionicons } from '@expo/vector-icons';
 import theme from '../../../theme/theme';
+import { useNavigation } from '@react-navigation/native';
 
 const RestaurantList = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.boxTitles}>
         <Text style={styles.title}>Restaurantes</Text>
-        <Text style={styles.title}>Ver mas</Text>
+
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() =>
+            navigation.navigate('accountTab', { screen: 'account' })
+          }
+        >
+          <Text style={styles.title}>Ver mas</Text>
+        </TouchableOpacity>
       </View>
 
       <ScrollView
