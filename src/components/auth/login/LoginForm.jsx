@@ -31,6 +31,7 @@ const LoginForm = () => {
           formValue.password
         );
         const { uid } = userCredential.user;
+
         await AsyncStorage.setItem('@userToken', uid);
         dispatch(signIn(uid));
       } catch (error) {

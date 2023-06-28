@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import {
   APIKEY,
   AUTHDOMAIN,
@@ -6,6 +7,7 @@ import {
   STORAGEBUCKET,
   MESSAGINGSENDERID,
   APPID,
+  MEASUREMENTID,
 } from '@env';
 
 const firebaseConfig = {
@@ -15,6 +17,8 @@ const firebaseConfig = {
   storageBucket: STORAGEBUCKET,
   messagingSenderId: MESSAGINGSENDERID,
   appId: APPID,
+  measurementId: MEASUREMENTID,
 };
 
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
