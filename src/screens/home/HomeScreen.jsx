@@ -18,6 +18,7 @@ import Header from '../../components/home/header/Header';
 import Search from '../../components/home/search/Search';
 import Categories from '../../components/home/categories/Categories';
 import LoMasPedido from '../../components/home/lomaspedido/LoMasPedido';
+import RestaurantList from '../../components/home/restaurantList/RestaurantList';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const HomeScreen = () => {
       <Search />
       <Categories />
       <LoMasPedido />
+      <RestaurantList />
 
       {/* {menu.map((producto) =>
         producto.existencia ? (

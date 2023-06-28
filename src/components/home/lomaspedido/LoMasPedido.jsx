@@ -41,8 +41,8 @@ const LoMasPedido = () => {
   }
 
   return (
-    <>
-      <Text style={styles.title}>Busqueda por categoria</Text>
+    <View>
+      <Text style={styles.title}>Lo mas pedido de la semana</Text>
 
       <ScrollView
         horizontal
@@ -51,12 +51,7 @@ const LoMasPedido = () => {
       >
         {menu.map((producto) =>
           producto.existencia ? (
-            <TouchableOpacity
-              key={producto.id}
-              onPress={() => handleProductPress(producto)}
-              style={styles.card}
-              activeOpacity={0.7}
-            >
+            <View key={producto.id} style={styles.card}>
               <Image source={{ uri: producto.imagen }} style={styles.img} />
               <View style={styles.iconBox}>
                 <Ionicons
@@ -78,18 +73,24 @@ const LoMasPedido = () => {
                 </View>
                 <View style={styles.footerCard}>
                   <Text>$ {producto.precio}</Text>
-                  <MaterialCommunityIcons
-                    name='plus-circle'
-                    size={28}
-                    color={theme.colors.blackMedium}
-                  />
+                  <TouchableOpacity
+                    onPress={() => handleProductPress(producto)}
+                    activeOpacity={0.7}
+                  >
+                    <MaterialCommunityIcons
+                      name='plus-circle'
+                      size={28}
+                      style={styles.icon}
+                      color={theme.colors.blackMedium}
+                    />
+                  </TouchableOpacity>
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
           ) : null
         )}
       </ScrollView>
-    </>
+    </View>
   );
 };
 

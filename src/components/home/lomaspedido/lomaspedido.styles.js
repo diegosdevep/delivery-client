@@ -9,9 +9,10 @@ export const styles = StyleSheet.create({
     fontWeight: theme.fontWeight.semiBold,
     color: theme.colors.blackMedium,
     marginHorizontal: 16,
+    marginTop: 20,
   },
   scrollViewContent: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-around',
     gap: 20,
     marginTop: 20,
@@ -54,5 +55,8 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.blackSoft,
     padding: 5,
     borderRadius: 10,
+  },
+  icon: {
+    elevation: 0,
   },
 });

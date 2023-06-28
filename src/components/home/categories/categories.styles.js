@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     fontSize: theme.fontSize.md,
     fontWeight: theme.fontWeight.semiBold,
     color: theme.colors.blackMedium,
+    marginVertical: 10,
   },
   scrollViewContent: {
     flexGrow: 1,

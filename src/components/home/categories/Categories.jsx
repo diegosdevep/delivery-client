@@ -21,7 +21,6 @@ const Categories = () => {
             onPress={() => console.log('hola')}
           >
             <View style={styles.categoryContainer}>
-              {/* <Text>{categoria.name}</Text> */}
               <Image source={categoria.imagen} style={styles.image} />
             </View>
           </TouchableOpacity>
