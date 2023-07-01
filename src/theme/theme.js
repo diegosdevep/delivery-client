@@ -19,6 +19,7 @@ const theme = {
   },
   fontWeight: {
     normal: '300',
+    lightBold: '400',
     semiBold: '500',
     bold: '700',
   },

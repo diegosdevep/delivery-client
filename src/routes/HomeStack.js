@@ -34,7 +34,7 @@ const HomeStack = () => {
       <Stack.Screen
         name='details'
         component={DetailsScreen}
-        options={{ title: 'Detalles Orden', headerBackTitle: 'Back' }}
+        options={{ title: 'Detalles Orden', headerShown: false }}
       />
       <Stack.Screen
         name='formOrden'
@@ -44,7 +44,7 @@ const HomeStack = () => {
       <Stack.Screen
         name='resume'
         component={ResumeScreen}
-        options={{ title: 'Resumen Pedido', headerBackVisible: false }}
+        options={{ title: 'Resumen Pedido', headerShown: false }}
       />
       <Stack.Screen
         name='progress'

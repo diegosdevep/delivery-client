@@ -10,7 +10,7 @@ const pedidosSlice = createSlice({
     setPedido: (state, action) => {
       const nuevoPedido = action.payload;
       const pedidoExistente = state.pedido.find(
-        (item) => item.platillo.id === nuevoPedido.platillo.id
+        (item) => item?.platillo?.id === nuevoPedido?.platillo?.id
       );
 
       if (pedidoExistente) {
