@@ -18,7 +18,7 @@ const Categories = () => {
             key={categoria.id}
             style={styles.boxCategorie}
             activeOpacity={0.7}
-            onPress={() => console.log('hola')}
+            onPress={() => console.log('Filtrando por Categoria')}
           >
             <View style={styles.categoryContainer}>
               <Image source={categoria.imagen} style={styles.image} />

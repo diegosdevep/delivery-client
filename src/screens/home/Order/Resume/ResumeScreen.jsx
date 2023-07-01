@@ -6,80 +6,93 @@ import { deletePedido, clearPedido } from '../../../../redux/pedidoReducer';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../../../firebase/firebase';
 import { format } from 'date-fns';
+import Header from '../../../../components/resume/header/Header';
+import { styles } from './resumeScreen.styles';
+import Checkout from '../../../../components/resume/checkout/Checkout';
 
 const ResumeScreen = () => {
-  const navigation = useNavigation();
   const pedido = useSelector((state) => state.pedido.pedido);
+  const navigation = useNavigation();
   const userToken = useSelector((state) => state.auth.userToken);
   const dispatch = useDispatch();
 
-  const date = new Date();
-  const formattedDate = format(date, 'dd/MM/yyyy HH:mm:ss');
-
-  const calcularTotalPedido = () => {
-    let totalPedido = 0;
-    pedido.forEach((item) => {
-      totalPedido += item.total;
-    });
-    return totalPedido;
-  };
-
-  const totalPedido = calcularTotalPedido();
-
-  const handleEliminarPedido = (id) => {
-    Alert.alert(
-      'Confirmar eliminación',
-      '¿Estás seguro de que deseas eliminar este pedido?',
-      [
-        {
-          text: 'Cancelar',
-          style: 'cancel',
-        },
-        {
-          text: 'Eliminar',
-          style: 'destructive',
-          onPress: () => {
-            dispatch(deletePedido(id));
-          },
-        },
-      ]
-    );
-  };
-
-  const progressPedido = async () => {
-    Alert.alert(
-      'Revisa tu pedido',
-      'Una vez realizado el pedido, no podrás cambiarlo',
-      [
-        {
-          text: 'Confirmar',
-          onPress: async () => {
-            const pedidoObj = {
-              tiempoEntrega: 0,
-              completado: false,
-              total: Number(totalPedido),
-              orden: pedido,
-              creado: formattedDate,
-              userId: userToken,
-            };
-            const docRef = await addDoc(collection(db, 'ordenes'), pedidoObj);
-            const orderId = docRef.id;
-
-            navigation.navigate('progress', { orderId, pedidoObj });
-            dispatch(clearPedido());
-          },
-        },
-        {
-          text: 'Revisar',
-          style: 'cancel',
-        },
-      ]
-    );
-  };
+  console.log(pedido);
 
   return (
-    <View>
-      {pedido.length === 0 ? (
+    <View style={styles.container}>
+      <Header />
+      <Checkout />
+    </View>
+  );
+};
+
+export default ResumeScreen;
+// const date = new Date();
+// const formattedDate = format(date, 'dd/MM/yyyy HH:mm:ss');
+
+// const calcularTotalPedido = () => {
+//   let totalPedido = 0;
+//   pedido.forEach((item) => {
+//     totalPedido += item.total;
+//   });
+//   return totalPedido;
+// };
+
+// const totalPedido = calcularTotalPedido();
+
+// const handleEliminarPedido = (id) => {
+//   Alert.alert(
+//     'Confirmar eliminación',
+//     '¿Estás seguro de que deseas eliminar este pedido?',
+//     [
+//       {
+//         text: 'Cancelar',
+//         style: 'cancel',
+//       },
+//       {
+//         text: 'Eliminar',
+//         style: 'destructive',
+//         onPress: () => {
+//           dispatch(deletePedido(id));
+//         },
+//       },
+//     ]
+//   );
+// };
+
+// const progressPedido = async () => {
+//   Alert.alert(
+//     'Revisa tu pedido',
+//     'Una vez realizado el pedido, no podrás cambiarlo',
+//     [
+//       {
+//         text: 'Confirmar',
+//         onPress: async () => {
+//           const pedidoObj = {
+//             tiempoEntrega: 0,
+//             completado: false,
+//             total: Number(totalPedido),
+//             orden: pedido,
+//             creado: formattedDate,
+//             userId: userToken,
+//           };
+//           const docRef = await addDoc(collection(db, 'ordenes'), pedidoObj);
+//           const orderId = docRef.id;
+
+//           navigation.navigate('progress', { orderId, pedidoObj });
+//           dispatch(clearPedido());
+//         },
+//       },
+//       {
+//         text: 'Revisar',
+//         style: 'cancel',
+//       },
+//     ]
+//   );
+// };
+
+{
+  /* {pedido.length === 0 ? (
         <Text>Aún no tienes productos</Text>
       ) : (
         <>
@@ -94,9 +107,13 @@ const ResumeScreen = () => {
                 padding: 10,
                 marginVertical: 5,
               }}
-            >
-              <Text>Nombre: {item.platillo.nombre}</Text>
-              <Text>Cantidad: {item.cantidad}</Text>
+            > */
+}
+{
+  /* <Text>Nombre: {item.platillo.nombre}</Text> */
+}
+{
+  /* <Text>Cantidad: {item.cantidad}</Text>
               <Text>Precio: {item.platillo.precio}</Text>
               <Text>id:{item.platillo.id}</Text>
               <Button
@@ -112,9 +129,5 @@ const ResumeScreen = () => {
           />
           <Button title='Confirmar Orden' onPress={progressPedido} />
         </>
-      )}
-    </View>
-  );
-};
-
-export default ResumeScreen;
+      )} */
+}
