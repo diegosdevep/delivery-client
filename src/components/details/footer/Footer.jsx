@@ -11,7 +11,11 @@ const Footer = () => {
   const platillo = useSelector((state) => state.pedido.platillo);
 
   const addToPedido = () => {
-    dispatch(setPedido(platillo));
+    const nuevoPedido = {
+      platillo: platillo,
+      cantidad: 1,
+    };
+    dispatch(setPedido(nuevoPedido));
     navigation.navigate('resume');
   };
 
@@ -19,7 +23,7 @@ const Footer = () => {
     <View style={styles.container}>
       <View style={styles.box}>
         <Text style={styles.total}>Total</Text>
-        <Text style={styles.price}>$ {platillo.precio}</Text>
+        <Text style={styles.price}>$ {platillo?.precio}</Text>
       </View>
 
       <TouchableOpacity

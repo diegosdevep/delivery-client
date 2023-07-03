@@ -1,10 +1,14 @@
-// Counter.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import theme from '../../theme/theme';
 
-const Counter = () => {
-  const [quantity, setQuantity] = useState(1);
+const Counter = ({ cantidad }) => {
+  const [quantity, setQuantity] = useState(cantidad);
+
+  console.log(quantity);
+  useEffect(() => {
+    setQuantity(cantidad);
+  }, [cantidad]);
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);

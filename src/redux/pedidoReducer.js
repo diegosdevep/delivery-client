@@ -1,3 +1,4 @@
+// pedidoReducer.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const pedidosSlice = createSlice({
@@ -14,7 +15,7 @@ const pedidosSlice = createSlice({
       );
 
       if (pedidoExistente) {
-        pedidoExistente.cantidad += nuevoPedido.cantidad;
+        pedidoExistente.cantidad = nuevoPedido.cantidad;
       } else {
         state.pedido.push(nuevoPedido);
       }
