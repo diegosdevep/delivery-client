@@ -20,4 +20,9 @@ export const styles = StyleSheet.create({
     fontWeight: theme.fontWeight.semiBold,
     color: theme.colors.blackMedium,
   },
+  textAddress: {
+    fontSize: theme.fontSize.sm,
+    fontWeight: theme.fontWeight.bold,
+    color: theme.colors.blackMedium,
+  },
 });

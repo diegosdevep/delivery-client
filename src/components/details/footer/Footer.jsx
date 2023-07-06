@@ -23,7 +23,7 @@ const Footer = () => {
     <View style={styles.container}>
       <View style={styles.box}>
         <Text style={styles.total}>Total</Text>
-        <Text style={styles.price}>$ {platillo?.precio}</Text>
+        <Text style={styles.price}>$ {platillo?.precio.toFixed(2)}</Text>
       </View>
 
       <TouchableOpacity

@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import theme from '../../theme/theme';
 
-const Counter = ({ cantidad }) => {
-  const [quantity, setQuantity] = useState(cantidad);
-
-  console.log(quantity);
-  useEffect(() => {
-    setQuantity(cantidad);
-  }, [cantidad]);
-
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
+const Counter = ({ quantity, onIncrement, onDecrement }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.btn}
         activeOpacity={0.7}
-        onPress={decrementQuantity}
+        onPress={onDecrement}
       >
         <Text style={styles.textBtn}>-</Text>
       </TouchableOpacity>
@@ -35,7 +17,7 @@ const Counter = ({ cantidad }) => {
       <TouchableOpacity
         style={styles.btn}
         activeOpacity={0.7}
-        onPress={incrementQuantity}
+        onPress={onIncrement}
       >
         <Text style={styles.textBtn}>+</Text>
       </TouchableOpacity>

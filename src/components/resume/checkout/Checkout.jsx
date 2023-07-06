@@ -1,13 +1,5 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  Button,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, ScrollView, Button, Alert, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
@@ -15,11 +7,13 @@ import { addDoc, collection } from 'firebase/firestore';
 import { clearPedido, deletePedido } from '../../../redux/pedidoReducer';
 import { db } from '../../../firebase/firebase';
 import { styles } from './checkout.styles';
+import PedidoItem from '../pedido/PedidoItem';
 
 const Checkout = () => {
   const pedido = useSelector((state) => state.pedido.pedido);
   const userToken = useSelector((state) => state.auth.userToken);
   const [quantities, setQuantities] = useState({});
+  const [comment, setComment] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -88,6 +82,7 @@ const Checkout = () => {
                 cantidad: quantities[orden?.platillo?.id] || 1,
               })),
               total: calcularPrecioTotal(),
+              comentario: comment,
               creado: formattedDate,
               userId: userToken,
             };
@@ -106,61 +101,42 @@ const Checkout = () => {
     );
   };
 
+  useEffect(() => {
+    const initialQuantities = pedido.reduce((acc, orden) => {
+      acc[orden.platillo.id] = 1;
+      return acc;
+    }, {});
+    setQuantities(initialQuantities);
+  }, [pedido]);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {pedido.map((orden) => (
-        <View style={styles.box} key={orden?.platillo?.id}>
-          <Image source={{ uri: orden?.platillo?.imagen }} style={styles.img} />
-
-          <View style={styles.content}>
-            <Text style={styles.title}>{orden?.platillo?.nombre}</Text>
-
-            <View>
-              <Text style={styles.ingredients}>~ Ingredientes</Text>
-              <Text style={styles.ingredients}>~ Ingredientes</Text>
-            </View>
-
-            <View style={styles.row}>
-              <Text style={styles.price}>
-                $
-                {(
-                  orden?.platillo?.precio *
-                  (quantities[orden?.platillo?.id] || 1)
-                ).toFixed(2)}
-              </Text>
-
-              <View style={styles.containerCounter}>
-                <TouchableOpacity
-                  style={styles.btn}
-                  activeOpacity={0.7}
-                  onPress={() => decrementQuantity(orden?.platillo?.id)}
-                >
-                  <Text style={styles.textBtn}>-</Text>
-                </TouchableOpacity>
-
-                <Text style={styles.text}>
-                  {quantities[orden?.platillo?.id] || 1}
-                </Text>
-
-                <TouchableOpacity
-                  style={styles.btn}
-                  activeOpacity={0.7}
-                  onPress={() => incrementQuantity(orden?.platillo?.id)}
-                >
-                  <Text style={styles.textBtn}>+</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <TouchableOpacity
-            style={styles.delete}
-            onPress={() => handleEliminarPedido(orden?.platillo?.id)}
-          >
-            <Text style={styles.textDelete}>X</Text>
-          </TouchableOpacity>
-        </View>
+        <PedidoItem
+          key={orden?.platillo?.id}
+          orden={orden}
+          quantity={quantities[orden?.platillo?.id]}
+          incrementQuantity={() => incrementQuantity(orden?.platillo?.id)}
+          decrementQuantity={() => decrementQuantity(orden?.platillo?.id)}
+          handleEliminarPedido={() => handleEliminarPedido(orden?.platillo?.id)}
+        />
       ))}
-      <Text>{calcularPrecioTotal()}</Text>
+      {/* <Text>{calcularPrecioTotal()}</Text> */}
+
+      <View style={styles.box}>
+        <Text style={styles.title}>Comentarios Adicionales</Text>
+        <View style={styles.boxComment}>
+          <TextInput
+            style={styles.commentInput}
+            placeholder='Escribe aqui si necesitas comentar algo extra sobre tu menu.'
+            value={comment}
+            onChangeText={setComment}
+            multiline={true}
+            numberOfLines={4}
+          />
+        </View>
+      </View>
+
       <Button title='Pedir' onPress={progressPedido} />
     </ScrollView>
   );

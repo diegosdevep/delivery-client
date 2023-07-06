@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   price: {
+    fontWeight: theme.fontWeight.bold,
     color: theme.colors.success,
     fontSize: theme.fontSize.lg,
   },

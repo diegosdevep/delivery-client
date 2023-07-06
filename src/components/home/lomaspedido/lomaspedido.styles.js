@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: theme.fontSize.md,
     fontWeight: theme.fontWeight.semiBold,
-    color: theme.colors.blackMedium,
+    color: theme.colors.blackStrong,
     marginHorizontal: 16,
     marginTop: 15,
   },
@@ -35,6 +35,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     gap: 5,
+  },
+  textName: {
+    fontSize: theme.fontSize.md,
+    fontWeight: theme.fontWeight.semiBold,
+    color: theme.colors.blackStrong,
+  },
+  textResto: {
+    fontSize: theme.fontSize.sm,
+    fontWeight: theme.fontWeight.normal,
+    color: theme.colors.blackMedium,
+  },
+  price: {
+    color: theme.colors.success,
+    fontWeight: theme.fontWeight.bold,
   },
   footerCard: {
     flexDirection: 'row',

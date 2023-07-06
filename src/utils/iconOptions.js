@@ -6,13 +6,13 @@ export const iconOptions = {
     default: (
       <Ionicons color={theme.colors.grey} size={24} name='person-outline' />
     ),
-    focused: <Ionicons color={theme.colors.primary} size={24} name='person' />,
+    focused: <Ionicons color={theme.colors.orange} size={24} name='person' />,
   },
   home: {
     default: (
       <Ionicons color={theme.colors.grey} size={24} name='home-outline' />
     ),
-    focused: <Ionicons color={theme.colors.primary} size={24} name='home' />,
+    focused: <Ionicons color={theme.colors.orange} size={24} name='home' />,
   },
   faq: {
     default: (

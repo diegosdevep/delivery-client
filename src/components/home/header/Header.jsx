@@ -9,7 +9,9 @@ const Header = () => {
         <Ionicons name='location-sharp' size={24} color='black' />
         <View>
           <Text style={styles.text}>Enviar a: </Text>
-          <Text style={styles.text}>Ferro Norte 989 Santa Rosa(LP) </Text>
+          <Text style={styles.textAddress}>
+            Ferro Norte 989 Santa Rosa(LP){' '}
+          </Text>
         </View>
       </View>
       <View>

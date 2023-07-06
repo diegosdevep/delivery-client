@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: theme.fontSize.md,
     fontWeight: theme.fontWeight.semiBold,
-    color: theme.colors.blackMedium,
+    color: theme.colors.blackStrong,
     marginVertical: 5,
     marginHorizontal: 16,
   },
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   boxCategorie: {
-    backgroundColor: '#F5F5F4',
+    backgroundColor: theme.colors.orange2,
     borderRadius: 50,
     padding: 10,
     ...theme.shadows.light,

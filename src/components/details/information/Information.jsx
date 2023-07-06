@@ -19,7 +19,6 @@ const Information = () => {
           <View style={styles.row}>
             <Text style={styles.title}>{platillo.nombre}</Text>
             <View style={[styles.row, { gap: 10 }]}>
-              <Text style={styles.price}>$ {platillo.precio}</Text>
               <Image
                 style={styles.img}
                 source={require('../../../../assets/logoResto.png')}

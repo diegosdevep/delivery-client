@@ -62,17 +62,21 @@ const LoMasPedido = () => {
               </TouchableOpacity>
 
               <View style={styles.content}>
-                <Text>{producto.nombre.slice(0, 19)}</Text>
+                <Text style={styles.textName}>
+                  {producto.nombre.slice(0, 19)}
+                </Text>
                 <View style={styles.restaurant}>
                   <Ionicons
                     name='restaurant-sharp'
                     size={16}
                     color={theme.colors.blackMedium}
                   />
-                  <Text>Los Caldenes</Text>
+                  <Text style={styles.textResto}>Los Caldenes</Text>
                 </View>
                 <View style={styles.footerCard}>
-                  <Text>$ {producto.precio}</Text>
+                  <Text style={styles.price}>
+                    $ {producto.precio.toFixed(2)}
+                  </Text>
                   <TouchableOpacity
                     onPress={() => handleProductPress(producto)}
                     activeOpacity={0.7}
@@ -81,7 +85,7 @@ const LoMasPedido = () => {
                       name='plus-circle'
                       size={28}
                       style={styles.icon}
-                      color={theme.colors.blackMedium}
+                      color={theme.colors.orange}
                     />
                   </TouchableOpacity>
                 </View>
