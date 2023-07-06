@@ -63,7 +63,7 @@ const LoMasPedido = () => {
 
               <View style={styles.content}>
                 <Text style={styles.textName}>
-                  {producto.nombre.slice(0, 19)}
+                  {producto.nombre.slice(0, 16)}
                 </Text>
                 <View style={styles.restaurant}>
                   <Ionicons

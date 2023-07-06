@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   content: {
     marginHorizontal: 10,
-    gap: 5,
+    gap: 10,
   },
   restaurant: {
     flexDirection: 'row',

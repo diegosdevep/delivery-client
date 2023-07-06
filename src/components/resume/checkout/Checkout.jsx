@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Text, ScrollView, Button, Alert, TextInput, View } from 'react-native';
+import {
+  Text,
+  ScrollView,
+  Button,
+  Alert,
+  TextInput,
+  View,
+  Switch,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
@@ -13,6 +23,7 @@ const Checkout = () => {
   const pedido = useSelector((state) => state.pedido.pedido);
   const userToken = useSelector((state) => state.auth.userToken);
   const [quantities, setQuantities] = useState({});
+  const [shipping, setShipping] = useState(false);
   const [comment, setComment] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -85,6 +96,7 @@ const Checkout = () => {
               comentario: comment,
               creado: formattedDate,
               userId: userToken,
+              envio: shipping,
             };
             const docRef = await addDoc(collection(db, 'ordenes'), pedidoObj);
             const orderId = docRef.id;
@@ -110,34 +122,56 @@ const Checkout = () => {
   }, [pedido]);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {pedido.map((orden) => (
-        <PedidoItem
-          key={orden?.platillo?.id}
-          orden={orden}
-          quantity={quantities[orden?.platillo?.id]}
-          incrementQuantity={() => incrementQuantity(orden?.platillo?.id)}
-          decrementQuantity={() => decrementQuantity(orden?.platillo?.id)}
-          handleEliminarPedido={() => handleEliminarPedido(orden?.platillo?.id)}
-        />
-      ))}
-      {/* <Text>{calcularPrecioTotal()}</Text> */}
-
-      <View style={styles.box}>
-        <Text style={styles.title}>Comentarios Adicionales</Text>
-        <View style={styles.boxComment}>
-          <TextInput
-            style={styles.commentInput}
-            placeholder='Escribe aqui si necesitas comentar algo extra sobre tu menu.'
-            value={comment}
-            onChangeText={setComment}
-            multiline={true}
-            numberOfLines={4}
+    <ScrollView contentContainerStyle={styles.main}>
+      <View style={styles.container}>
+        {pedido.map((orden) => (
+          <PedidoItem
+            key={orden?.platillo?.id}
+            orden={orden}
+            quantity={quantities[orden?.platillo?.id]}
+            incrementQuantity={() => incrementQuantity(orden?.platillo?.id)}
+            decrementQuantity={() => decrementQuantity(orden?.platillo?.id)}
+            handleEliminarPedido={() =>
+              handleEliminarPedido(orden?.platillo?.id)
+            }
           />
+        ))}
+
+        <View style={styles.envioBox}>
+          <Switch
+            value={shipping}
+            onValueChange={(value) => setShipping(value)}
+          />
+          <Text style={styles.envio}>Solicitar Envio</Text>
+        </View>
+
+        <View style={styles.box}>
+          <Text style={styles.title}>Comentarios Adicionales</Text>
+          <View style={styles.boxComment}>
+            <TextInput
+              style={styles.commentInput}
+              placeholder='Escribe aqui si necesitas comentar algo extra sobre tu menu.'
+              value={comment}
+              onChangeText={setComment}
+              multiline={true}
+              numberOfLines={4}
+            />
+          </View>
         </View>
       </View>
 
-      <Button title='Pedir' onPress={progressPedido} />
+      <ImageBackground
+        style={styles.img}
+        source={require('../../../../assets/orangeBg.png')}
+      >
+        <View style={{ alignItems: 'center' }}>
+          <Text style={styles.total}>Total</Text>
+          <Text style={styles.price}>${calcularPrecioTotal().toFixed(2)}</Text>
+        </View>
+        <TouchableOpacity style={styles.btn} onPress={progressPedido}>
+          <Text style={styles.textBtn}>Pagar</Text>
+        </TouchableOpacity>
+      </ImageBackground>
     </ScrollView>
   );
 };

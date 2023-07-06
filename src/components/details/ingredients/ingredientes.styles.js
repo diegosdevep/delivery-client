@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   boxIngrediente: {
-    backgroundColor: '#F5F5F4',
+    backgroundColor: theme.colors.orange2,
     borderRadius: 50,
     padding: 8,
     ...theme.shadows.light,

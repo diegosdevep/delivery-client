@@ -3,6 +3,7 @@ import { styles } from './header.styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native';
+import theme from '../../../theme/theme';
 
 const Header = () => {
   const navigation = useNavigation();
@@ -19,7 +20,11 @@ const Header = () => {
         <Text style={styles.text}>Volver al menu </Text>
       </View>
       <View>
-        <Ionicons name='notifications-sharp' size={24} color='black' />
+        <Ionicons
+          name='notifications-sharp'
+          size={24}
+          color={theme.colors.orange}
+        />
       </View>
     </SafeAreaView>
   );
