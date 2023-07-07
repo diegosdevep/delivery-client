@@ -9,13 +9,11 @@ import RestaurantList from '../../components/home/restaurantList/RestaurantList'
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.main}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Header />
         <Search />
         <Categories />
         <LoMasPedido />
-        <RestaurantList />
-        <RestaurantList />
         <RestaurantList />
       </ScrollView>
     </SafeAreaView>
