@@ -5,7 +5,7 @@ const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   box: {
-    width: width * 0.9,
+    width: width * 0.95,
     backgroundColor: theme.colors.white,
     justifyContent: 'space-between',
     alignItems: 'flex-end',
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   content: {
     flex: 3,
-    alignItems: 'flex-star',
+    alignItems: 'flex-start',
     justifyContent: 'flex-end',
     paddingHorizontal: 20,
   },

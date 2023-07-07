@@ -14,8 +14,8 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-around',
     paddingHorizontal: 20,
-    marginTop: 20,
     gap: 10,
+    paddingVertical: 10,
   },
   box: {
     alignItems: 'center',

@@ -1,10 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/home/HomeScreen';
 import theme from '../theme/theme';
-import MenuScreen from '../screens/home/Order/Menu/MenuScreen';
 import DetailsScreen from '../screens/home/Order/Details/DetailsScreen';
 import ResumeScreen from '../screens/home/Order/Resume/ResumeScreen';
-import FormOrderScreen from '../screens/home/Order/FormOrder/FormOrderScreen';
 import ProgressScreen from '../screens/home/Order/Progress/ProgressScreen';
 import HeaderRight from '../components/shared/HeaderRigth';
 
@@ -27,19 +25,9 @@ const HomeStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='menu'
-        component={MenuScreen}
-        options={{ title: 'Menu' }}
-      />
-      <Stack.Screen
         name='details'
         component={DetailsScreen}
         options={{ title: 'Detalles Orden', headerShown: false }}
-      />
-      <Stack.Screen
-        name='formOrden'
-        component={FormOrderScreen}
-        options={{ title: 'Ordenar Platillo' }}
       />
       <Stack.Screen
         name='resume'
@@ -49,7 +37,7 @@ const HomeStack = () => {
       <Stack.Screen
         name='progress'
         component={ProgressScreen}
-        options={{ title: 'Progreso de Pedido' }}
+        options={{ title: 'Progreso de Pedido', headerShown: false }}
       />
     </Stack.Navigator>
   );

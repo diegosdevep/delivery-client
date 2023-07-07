@@ -3,17 +3,12 @@ import theme from '../../../theme/theme';
 const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    flexDirection: 'column',
-    alignSelf: 'center',
-  },
   container: {
     flex: 1,
-    alignSelf: 'center',
   },
   box: {
     gap: 10,
+    marginBottom: 30,
   },
   title: {
     fontSize: theme.fontSize.lg,
@@ -36,39 +31,9 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     borderRadius: 5,
     height: 105,
-    width: width * 0.9,
+    width: width * 0.95,
   },
   commentInput: {
     flex: 1,
-  },
-  img: {
-    width: width * 0.95,
-    height: 104,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-  },
-  btn: {
-    width: 222,
-    height: 46,
-    backgroundColor: theme.colors.orange,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textBtn: {
-    color: theme.colors.white,
-    fontSize: theme.fontSize.md,
-    fontWeight: theme.fontWeight.semiBold,
-  },
-  price: {
-    color: theme.colors.success,
-    fontSize: theme.fontSize.lg,
-    fontWeight: theme.fontWeight.bold,
-  },
-  total: {
-    color: theme.colors.blackMedium,
-    fontSize: theme.fontSize.lg,
-    fontWeight: theme.fontWeight.bold,
   },
 });

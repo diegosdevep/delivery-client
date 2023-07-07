@@ -49,50 +49,52 @@ const LoMasPedido = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContent}
       >
-        {menu.map((producto) =>
-          producto.existencia ? (
-            <View key={producto.id} style={styles.card}>
-              <Image source={{ uri: producto.imagen }} style={styles.img} />
-              <TouchableOpacity style={styles.iconBox} activeOpacity={0.7}>
-                <Ionicons
-                  name='heart-outline'
-                  size={24}
-                  color={theme.colors.white}
-                />
-              </TouchableOpacity>
-
-              <View style={styles.content}>
-                <Text style={styles.textName}>
-                  {producto.nombre.slice(0, 16)}
-                </Text>
-                <View style={styles.restaurant}>
+        <View style={{ flexDirection: 'row', marginHorizontal: 16, gap: 15 }}>
+          {menu.map((producto) =>
+            producto.existencia ? (
+              <View key={producto.id} style={styles.card}>
+                <Image source={{ uri: producto.imagen }} style={styles.img} />
+                <TouchableOpacity style={styles.iconBox} activeOpacity={0.7}>
                   <Ionicons
-                    name='restaurant-sharp'
-                    size={16}
-                    color={theme.colors.blackMedium}
+                    name='heart-outline'
+                    size={24}
+                    color={theme.colors.white}
                   />
-                  <Text style={styles.textResto}>Los Caldenes</Text>
-                </View>
-                <View style={styles.footerCard}>
-                  <Text style={styles.price}>
-                    $ {producto.precio.toFixed(2)}
+                </TouchableOpacity>
+
+                <View style={styles.content}>
+                  <Text style={styles.textName}>
+                    {producto.nombre.slice(0, 16)}
                   </Text>
-                  <TouchableOpacity
-                    onPress={() => handleProductPress(producto)}
-                    activeOpacity={0.7}
-                  >
-                    <MaterialCommunityIcons
-                      name='plus-circle'
-                      size={28}
-                      style={styles.icon}
-                      color={theme.colors.orange}
+                  <View style={styles.restaurant}>
+                    <Ionicons
+                      name='restaurant-sharp'
+                      size={16}
+                      color={theme.colors.blackMedium}
                     />
-                  </TouchableOpacity>
+                    <Text style={styles.textResto}>Los Caldenes</Text>
+                  </View>
+                  <View style={styles.footerCard}>
+                    <Text style={styles.price}>
+                      $ {producto.precio.toFixed(2)}
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() => handleProductPress(producto)}
+                      activeOpacity={0.7}
+                    >
+                      <MaterialCommunityIcons
+                        name='plus-circle'
+                        size={28}
+                        style={styles.icon}
+                        color={theme.colors.orange}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
-            </View>
-          ) : null
-        )}
+            ) : null
+          )}
+        </View>
       </ScrollView>
     </View>
   );

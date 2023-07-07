@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Text,
-  ScrollView,
-  Button,
-  Alert,
-  TextInput,
-  View,
-  Switch,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native';
+import { Text, ScrollView, Alert, TextInput, View, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
@@ -18,6 +8,8 @@ import { clearPedido, deletePedido } from '../../../redux/pedidoReducer';
 import { db } from '../../../firebase/firebase';
 import { styles } from './checkout.styles';
 import PedidoItem from '../pedido/PedidoItem';
+import Footer from './footer/Footer';
+import PaymentDetails from './paymentDetails/PaymentDetails';
 
 const Checkout = () => {
   const pedido = useSelector((state) => state.pedido.pedido);
@@ -92,7 +84,7 @@ const Checkout = () => {
                 ...orden,
                 cantidad: quantities[orden?.platillo?.id] || 1,
               })),
-              total: calcularPrecioTotal(),
+              total: total,
               comentario: comment,
               creado: formattedDate,
               userId: userToken,
@@ -113,66 +105,67 @@ const Checkout = () => {
     );
   };
 
+  const subTotal = Number(calcularPrecioTotal().toFixed(2));
+  const envio = Number(550);
+  const total = subTotal + envio;
+
   useEffect(() => {
     const initialQuantities = pedido.reduce((acc, orden) => {
       acc[orden.platillo.id] = 1;
       return acc;
     }, {});
+
     setQuantities(initialQuantities);
   }, [pedido]);
 
   return (
-    <ScrollView contentContainerStyle={styles.main}>
-      <View style={styles.container}>
-        {pedido.map((orden) => (
-          <PedidoItem
-            key={orden?.platillo?.id}
-            orden={orden}
-            quantity={quantities[orden?.platillo?.id]}
-            incrementQuantity={() => incrementQuantity(orden?.platillo?.id)}
-            decrementQuantity={() => decrementQuantity(orden?.platillo?.id)}
-            handleEliminarPedido={() =>
-              handleEliminarPedido(orden?.platillo?.id)
-            }
-          />
-        ))}
+    <View style={{ flex: 1, alignSelf: 'center' }}>
+      {pedido.length > 0 ? (
+        <View style={styles.container}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {pedido?.map((orden) => (
+              <PedidoItem
+                key={orden?.platillo?.id}
+                orden={orden}
+                quantity={quantities[orden?.platillo?.id]}
+                incrementQuantity={() => incrementQuantity(orden?.platillo?.id)}
+                decrementQuantity={() => decrementQuantity(orden?.platillo?.id)}
+                handleEliminarPedido={() =>
+                  handleEliminarPedido(orden?.platillo?.id)
+                }
+              />
+            ))}
 
-        <View style={styles.envioBox}>
-          <Switch
-            value={shipping}
-            onValueChange={(value) => setShipping(value)}
-          />
-          <Text style={styles.envio}>Solicitar Envio</Text>
-        </View>
+            <View style={styles.envioBox}>
+              <Switch
+                value={shipping}
+                onValueChange={(value) => setShipping(value)}
+              />
+              <Text style={styles.envio}>Solicitar Envio</Text>
+            </View>
 
-        <View style={styles.box}>
-          <Text style={styles.title}>Comentarios Adicionales</Text>
-          <View style={styles.boxComment}>
-            <TextInput
-              style={styles.commentInput}
-              placeholder='Escribe aqui si necesitas comentar algo extra sobre tu menu.'
-              value={comment}
-              onChangeText={setComment}
-              multiline={true}
-              numberOfLines={4}
-            />
-          </View>
-        </View>
-      </View>
+            <View style={styles.box}>
+              <Text style={styles.title}>Comentarios Adicionales</Text>
+              <View style={styles.boxComment}>
+                <TextInput
+                  style={styles.commentInput}
+                  placeholder='Escribe aqui si necesitas comentar algo extra sobre tu menu.'
+                  value={comment}
+                  onChangeText={setComment}
+                  multiline={true}
+                  numberOfLines={4}
+                />
+              </View>
+            </View>
 
-      <ImageBackground
-        style={styles.img}
-        source={require('../../../../assets/orangeBg.png')}
-      >
-        <View style={{ alignItems: 'center' }}>
-          <Text style={styles.total}>Total</Text>
-          <Text style={styles.price}>${calcularPrecioTotal().toFixed(2)}</Text>
+            <PaymentDetails subTotal={subTotal} envio={envio} total={total} />
+          </ScrollView>
+          <Footer price={total} onPress={progressPedido} />
         </View>
-        <TouchableOpacity style={styles.btn} onPress={progressPedido}>
-          <Text style={styles.textBtn}>Pagar</Text>
-        </TouchableOpacity>
-      </ImageBackground>
-    </ScrollView>
+      ) : (
+        <Text>No tienes productos en el pedido</Text>
+      )}
+    </View>
   );
 };
 

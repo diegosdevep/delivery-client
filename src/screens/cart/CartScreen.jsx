@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-const FormOrderScreen = () => {
+const CartScreen = () => {
   return (
     <View>
-      <Text>FormOrderScreen</Text>
+      <Text>CartScreen</Text>
     </View>
   );
 };
 
-export default FormOrderScreen;
+export default CartScreen;

@@ -15,12 +15,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 10,
     gap: 10,
-    marginHorizontal: 16,
   },
   boxCategorie: {
     backgroundColor: theme.colors.orange2,
     borderRadius: 50,
     padding: 10,
+    marginVertical: 5,
     ...theme.shadows.light,
   },
   categoryContainer: {

@@ -1,14 +1,64 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import { useSelector } from 'react-redux';
+import { FontAwesome } from '@expo/vector-icons';
+import { styles } from './progressScreen.styles';
 
 const ProgressScreen = () => {
   const pedido = useSelector((state) => state.pedido.pedido);
+  const navigation = useNavigation();
 
-  console.log('----------', pedido);
+  const handleNavigateHome = () => {
+    navigation.reset({
+      routes: [{ name: 'home' }],
+    });
+  };
+
   return (
-    <View>
-      <Text>ProgressScreen</Text>
+    <View style={styles.container}>
+      <View style={styles.containerCheck}>
+        <FontAwesome
+          style={styles.check}
+          name='check'
+          size={40}
+          color={theme.colors.white}
+        />
+      </View>
+      <ImageBackground
+        style={styles.img}
+        resizeMode='contain'
+        source={require('../../../../../assets/ticket.png')}
+      >
+        <View style={styles.textContainer}>
+          <Text style={styles.titleText}>Orden realizada con éxito!</Text>
+          <Image
+            style={styles.icon}
+            source={require('../../../../../assets/orderIcon.png')}
+          />
+          <Text style={styles.subtitleText}>
+            Tu orden ya fue enviada. En instantes te avisaremos en cuanto tiempo
+            estará lista.
+          </Text>
+          <Text style={styles.span}>Nª de orden: 123456</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate('ticketTab', { screen: 'ticket' });
+              handleNavigateHome();
+            }}
+          >
+            <Text style={styles.buttonText}>
+              <Text style={styles.buttonTextUnderline}>Seguir tu orden</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -17,10 +67,11 @@ export default ProgressScreen;
 
 // import React, { useEffect, useState } from 'react';
 // import { View, Text } from 'react-native';
-// import { useRoute } from '@react-navigation/native';
+// import { useRoute, useNavigation } from '@react-navigation/native';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { fetchOrdenById } from '../../../../redux/ordersReducer';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
+import theme from '../../../../theme/theme';
 
 // const ProgressScreen = () => {
 //   const route = useRoute();

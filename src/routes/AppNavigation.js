@@ -1,7 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { iconOptions } from '../utils/iconOptions';
 import AccountStack from './AccountStack';
 import HomeStack from './HomeStack';
-import { iconOptions } from '../utils/iconOptions';
+import TicketStack from './TicketStack';
+import CartStack from './CartStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +19,24 @@ const AppNavigation = () => {
           title: 'Home',
           tabBarIcon: ({ focused }) =>
             focused ? iconOptions.home.focused : iconOptions.home.default,
+        }}
+      />
+      <Tab.Screen
+        name='ticketTab'
+        component={TicketStack}
+        options={{
+          title: 'Tickets',
+          tabBarIcon: ({ focused }) =>
+            focused ? iconOptions.ticket.focused : iconOptions.ticket.default,
+        }}
+      />
+      <Tab.Screen
+        name='cartTab'
+        component={CartStack}
+        options={{
+          title: 'Carrito',
+          tabBarIcon: ({ focused }) =>
+            focused ? iconOptions.carrito.focused : iconOptions.carrito.default,
         }}
       />
       <Tab.Screen

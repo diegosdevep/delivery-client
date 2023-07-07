@@ -14,6 +14,20 @@ export const iconOptions = {
     ),
     focused: <Ionicons color={theme.colors.orange} size={24} name='home' />,
   },
+  ticket: {
+    default: (
+      <FontAwesome color={theme.colors.grey} size={24} name='file-text-o' />
+    ),
+    focused: (
+      <FontAwesome name='file-text' size={24} color={theme.colors.orange} />
+    ),
+  },
+  carrito: {
+    default: (
+      <Ionicons color={theme.colors.grey} size={24} name='cart-outline' />
+    ),
+    focused: <Ionicons color={theme.colors.orange} size={24} name='cart' />,
+  },
   faq: {
     default: (
       <FontAwesome

@@ -13,11 +13,10 @@ export const styles = StyleSheet.create({
   },
   scrollViewContent: {
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     gap: 20,
-    marginTop: 20,
-    marginBottom: 5,
-    marginHorizontal: 16,
+    marginVertical: 10,
+    paddingVertical: 10,
   },
   card: {
     width: 175,

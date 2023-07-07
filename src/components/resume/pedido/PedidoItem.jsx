@@ -10,6 +10,12 @@ const PedidoItem = ({
   decrementQuantity,
   handleEliminarPedido,
 }) => {
+  if (!orden || !orden.platillo) {
+    throw new Error(
+      'Error en el componente PedidoItem: orden o orden.platillo es nulo'
+    );
+  }
+
   return (
     <View style={styles.box}>
       <Image style={styles.img} source={{ uri: orden?.platillo?.imagen }} />

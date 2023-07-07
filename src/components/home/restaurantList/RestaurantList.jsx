@@ -29,35 +29,37 @@ const RestaurantList = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContent}
       >
-        {restaurantes.map((resto, index) => (
-          <View key={index} style={styles.card}>
-            <Image source={{ uri: resto.imagen }} style={styles.img} />
+        <View style={{ flexDirection: 'row', marginHorizontal: 16, gap: 15 }}>
+          {restaurantes.map((resto, index) => (
+            <View key={index} style={styles.card}>
+              <Image source={{ uri: resto.imagen }} style={styles.img} />
 
-            <View style={styles.content}>
-              <View style={styles.restoTitle}>
-                <Ionicons
-                  name='restaurant-sharp'
-                  size={16}
-                  color={theme.colors.blackMedium}
-                />
-                <Text>{resto.titulo.slice(0, 19)}</Text>
-              </View>
+              <View style={styles.content}>
+                <View style={styles.restoTitle}>
+                  <Ionicons
+                    name='restaurant-sharp'
+                    size={16}
+                    color={theme.colors.blackMedium}
+                  />
+                  <Text>{resto.titulo.slice(0, 19)}</Text>
+                </View>
 
-              <Text style={styles.description}>
-                {resto.descripcion.slice(0, 33)}
-              </Text>
+                <Text style={styles.description}>
+                  {resto.descripcion.slice(0, 33)}
+                </Text>
 
-              <View style={styles.restoTitle}>
-                <Ionicons
-                  name='location-sharp'
-                  size={16}
-                  color={theme.colors.blackMedium}
-                />
-                <Text style={styles.address}>{resto.direccion}</Text>
+                <View style={styles.restoTitle}>
+                  <Ionicons
+                    name='location-sharp'
+                    size={16}
+                    color={theme.colors.blackMedium}
+                  />
+                  <Text style={styles.address}>{resto.direccion}</Text>
+                </View>
               </View>
             </View>
-          </View>
-        ))}
+          ))}
+        </View>
       </ScrollView>
     </View>
   );
