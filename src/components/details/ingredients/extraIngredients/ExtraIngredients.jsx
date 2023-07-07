@@ -35,31 +35,6 @@ const ExtraIngredients = () => {
         'https://images.unsplash.com/photo-1627981906592-ae3f0ee9486d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcGlub3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
       precio: '$280',
     },
-    {
-      id: 4,
-      name: 'Morron',
-      label: 'Extra morron',
-      imageUri:
-        'https://images.unsplash.com/photo-1627981906592-ae3f0ee9486d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcGlub3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
-      precio: '$380',
-    },
-    {
-      id: 5,
-      name: 'Morron',
-      label: 'Extra morron',
-      imageUri:
-        'https://images.unsplash.com/photo-1627981906592-ae3f0ee9486d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcGlub3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
-      precio: '$380',
-    },
-    {
-      id: 6,
-      name: 'Morron',
-      label: 'Extra morron',
-      imageUri:
-        'https://images.unsplash.com/photo-1627981906592-ae3f0ee9486d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcGlub3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
-      precio: '$380',
-    },
-    // Agregar más ingredientes aquí...
   ];
 
   const handleToggleIngredients = () => {
