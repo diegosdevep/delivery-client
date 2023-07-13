@@ -15,16 +15,22 @@ export const styles = StyleSheet.create({
     borderRadius: 100,
     padding: 20,
     zIndex: 2,
-    top: 100,
+    top: 0,
+    alignSelf: 'center',
+    marginTop: -50,
     ...Platform.select({
       android: {
-        elevation: 5,
+        elevation: 15,
+        shadowColor: theme.colors.orange,
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 1,
+        shadowRadius: 20,
       },
       ios: {
         shadowColor: theme.colors.orange,
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 1,
-        shadowRadius: 20,
+        shadowRadius: 15,
       },
     }),
   },
@@ -72,8 +78,9 @@ export const styles = StyleSheet.create({
   },
   span: {
     fontSize: theme.fontSize.md,
-    fontWeight: theme.fontWeight.semiBold,
+    fontWeight: theme.fontWeight.bold,
     color: theme.colors.blackMedium,
+    alignSelf: 'center',
   },
   button: {
     padding: 10,

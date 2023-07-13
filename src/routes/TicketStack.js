@@ -1,12 +1,25 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CartScreen from '../screens/cart/CartScreen';
+import TicketTopNavigation from './TicketTopNavigation';
+import theme from '../theme/theme';
 
 const Stack = createNativeStackNavigator();
 
-const TicketStack = () => {
+const TicketStack = ({ route }) => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name='ticket' component={CartScreen} />
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: theme.colors.background },
+      }}
+    >
+      <Stack.Screen
+        name='ticket'
+        component={TicketTopNavigation}
+        initialParams={route.params}
+        options={{
+          title: 'Tus Ordenes',
+          headerShadowVisible: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

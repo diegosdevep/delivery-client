@@ -2,8 +2,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { iconOptions } from '../utils/iconOptions';
 import AccountStack from './AccountStack';
 import HomeStack from './HomeStack';
-import TicketStack from './TicketStack';
 import CartStack from './CartStack';
+import TicketStack from './TicketStack';
 
 const Tab = createBottomTabNavigator();
 

@@ -1,13 +1,13 @@
 const theme = {
   colors: {
     primary: '#00263F',
-    background: '#ECECEE',
+    background: '#FAFAFA',
     white: '#FFFFFF',
     grey: '#666666',
     info: '#0092C9',
     yellow: '#FFF200',
     success: '#76B841',
-    orange: '#FE8C1F',
+    orange: '#F57B07',
     orange2: '#FBE9DA',
     danger: '#EC0C0C',
     blackSoft: 'rgba(0,0,0,0.3)',

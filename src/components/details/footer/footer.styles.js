@@ -30,15 +30,17 @@ export const styles = StyleSheet.create({
     gap: 10,
     width: 250,
     height: 50,
-    backgroundColor: theme.colors.blackStrong,
+    backgroundColor: theme.colors.orange,
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    ...theme.shadows.soft,
   },
   textBtn: {
     color: theme.colors.white,
     fontWeight: theme.fontWeight.semiBold,
     fontSize: theme.fontSize.md,
+    ...theme.shadows.medium,
   },
 });
